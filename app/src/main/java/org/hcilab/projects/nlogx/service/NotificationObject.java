@@ -50,8 +50,6 @@ class NotificationObject {
 	private String batteryStatus;
 	private boolean isConnected;
 	private String connectionType;
-	private String lastActivity;
-	private String lastLocation;
 
 	// Compat
 	private String group;
@@ -119,12 +117,6 @@ class NotificationObject {
 		removeReason = reason;
 
 		extract();
-
-		if(Const.ENABLE_ACTIVITY_RECOGNITION || Const.ENABLE_LOCATION_SERVICE) {
-			SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-			lastActivity = sp.getString(Const.PREF_LAST_ACTIVITY, null);
-			lastLocation = sp.getString(Const.PREF_LAST_LOCATION, null);
-		}
 	}
 
 	private void extract()  {
@@ -248,7 +240,6 @@ class NotificationObject {
 
 			json.put("people",         people == null ? 0 : people.size());
 			json.put("style",          style);
-			//json.put("displayName",    displayName);
 
 			// Text
 			if(LOG_TEXT) {
@@ -290,16 +281,6 @@ class NotificationObject {
 			// 26
 			if(Build.VERSION.SDK_INT >= 26 && removeReason != -1) {
 				json.put("removeReason", removeReason);
-			}
-
-			// Activity
-			if(Const.ENABLE_ACTIVITY_RECOGNITION && lastActivity != null) {
-				json.put("lastActivity", new JSONObject(lastActivity));
-			}
-
-			// Location
-			if(Const.ENABLE_LOCATION_SERVICE && lastLocation != null) {
-				json.put("lastLocation", new JSONObject(lastLocation));
 			}
 
 			return json.toString();
