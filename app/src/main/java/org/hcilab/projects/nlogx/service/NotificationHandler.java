@@ -31,8 +31,6 @@ public class NotificationHandler {
 			if(Const.DEBUG) System.out.println("posted ongoing!");
 			return;
 		}
-		NotificationObject no = new NotificationObject(context, sbn, true, -1);
-		log(DatabaseHelper.PostedEntry.TABLE_NAME, DatabaseHelper.PostedEntry.COLUMN_NAME_CONTENT, no.toString());
 	}
 
 	void handleRemoved(StatusBarNotification sbn, int reason) {
@@ -40,8 +38,6 @@ public class NotificationHandler {
 			if(Const.DEBUG) System.out.println("removed ongoing!");
 			return;
 		}
-		NotificationObject no = new NotificationObject(context, sbn, false, reason);
-		log(DatabaseHelper.RemovedEntry.TABLE_NAME, DatabaseHelper.RemovedEntry.COLUMN_NAME_CONTENT, no.toString());
 	}
 
 	private void log(String tableName, String columnName, String content) {
