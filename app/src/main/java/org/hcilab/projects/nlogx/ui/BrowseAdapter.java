@@ -2,19 +2,15 @@ package org.hcilab.projects.nlogx.ui;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.util.Pair;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.hcilab.projects.nlogx.R;
@@ -53,22 +49,7 @@ class BrowseAdapter extends RecyclerView.Adapter<BrowseViewHolder> {
 	@Override
 	public BrowseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_browse, parent, false);
-		BrowseViewHolder vh = new BrowseViewHolder(view);
-		vh.item.setOnClickListener(v -> {
-			String id = (String) v.getTag();
-			if(id != null) {
-				Intent intent = new Intent(context, DetailsActivity.class);
-				intent.putExtra(DetailsActivity.EXTRA_ID, id);
-				if(Build.VERSION.SDK_INT >= 21) {
-					Pair<View, String> p1 = Pair.create(vh.icon, "icon");
-					@SuppressWarnings("unchecked") ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(context, p1);
-					context.startActivityForResult(intent, 1, options.toBundle());
-				} else {
-					context.startActivityForResult(intent, 1);
-				}
-			}
-		});
-		return vh;
+		return new BrowseViewHolder(view);
 	}
 
 	@Override

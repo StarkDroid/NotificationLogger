@@ -2,10 +2,8 @@ package org.hcilab.projects.nlogx.service;
 
 import android.app.Notification;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 
@@ -48,8 +46,6 @@ class NotificationObject {
 	private boolean isScreenOn;
 	private int batteryLevel;
 	private String batteryStatus;
-	private boolean isConnected;
-	private String connectionType;
 
 	// Compat
 	private String group;
@@ -139,8 +135,6 @@ class NotificationObject {
 		isScreenOn     = Util.isScreenOn(context);
 		batteryLevel   = Util.getBatteryLevel(context);
 		batteryStatus  = Util.getBatteryStatus(context);
-		isConnected    = Util.isNetworkAvailable(context);
-		connectionType = Util.getConnectivityType(context);
 
 		// 16
 		priority = n.priority;
@@ -228,8 +222,6 @@ class NotificationObject {
 			json.put("isScreenOn",     isScreenOn);
 			json.put("batteryLevel",   batteryLevel);
 			json.put("batteryStatus",  batteryStatus);
-			json.put("isConnected",    isConnected);
-			json.put("connectionType", connectionType);
 
 			// Compat
 			json.put("group",          group);

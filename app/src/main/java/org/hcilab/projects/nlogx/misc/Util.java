@@ -99,30 +99,6 @@ public class Util {
 		return false;
 	}
 
-	public static String getLocale(Context context) {
-		if(Build.VERSION.SDK_INT >= 24) {
-			LocaleList localeList = context.getResources().getConfiguration().getLocales();
-			return localeList.toString();
-		} else {
-			//noinspection deprecation
-			return context.getResources().getConfiguration().locale.toString();
-		}
-	}
-
-	public static boolean hasPermission(Context context, String permission) {
-		return PermissionChecker.checkSelfPermission(context, permission) == PermissionChecker.PERMISSION_GRANTED;
-	}
-
-	public static String[] getAllInstalledApps(Context context) {
-		PackageManager pm = context.getPackageManager();
-		List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
-		ArrayList<String> list = new ArrayList<>();
-		for(ApplicationInfo packageInfo : packages) {
-			list.add(packageInfo.packageName);
-		}
-		return list.toArray(new String[0]);
-	}
-
 	public static int getBatteryLevel(Context context) {
 		if(Build.VERSION.SDK_INT >= 21) {
 			BatteryManager bm = (BatteryManager) context.getSystemService(Context.BATTERY_SERVICE);
@@ -152,47 +128,6 @@ public class Util {
 					case BatteryManager.BATTERY_STATUS_NOT_CHARGING: return "not charging";
 					case BatteryManager.BATTERY_STATUS_UNKNOWN: return "unknown";
 					default: return ""+status;
-				}
-			}
-		} catch (Exception e) {
-			if(Const.DEBUG) e.printStackTrace();
-		}
-		return "undefined";
-	}
-
-	public static boolean isNetworkAvailable(Context context) {
-		ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-		if(cm != null) {
-			try {
-				NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
-				return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-			} catch (Exception e) {
-				if(Const.DEBUG) e.printStackTrace();
-			}
-		}
-		return false;
-	}
-
-	public static String getConnectivityType(Context context) {
-		try {
-			ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-			if(cm != null) {
-				NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-				if(networkInfo != null) {
-					int type = networkInfo.getType();
-					switch (type) {
-						case ConnectivityManager.TYPE_BLUETOOTH: return "bluetooth";
-						case ConnectivityManager.TYPE_DUMMY: return "dummy";
-						case ConnectivityManager.TYPE_ETHERNET: return "ethernet";
-						case ConnectivityManager.TYPE_MOBILE: return "mobile";
-						case ConnectivityManager.TYPE_MOBILE_DUN: return "mobile dun";
-						case ConnectivityManager.TYPE_VPN: return "vpn";
-						case ConnectivityManager.TYPE_WIFI: return "wifi";
-						case ConnectivityManager.TYPE_WIMAX: return "wimax";
-						default: return ""+type;
-					}
-				} else {
-					return "none";
 				}
 			}
 		} catch (Exception e) {

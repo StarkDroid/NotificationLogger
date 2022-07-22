@@ -1,6 +1,5 @@
 package org.hcilab.projects.nlogx.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -32,15 +31,6 @@ public class BrowseActivity extends AppCompatActivity implements SwipeRefreshLay
 
 		update();
 	}
-
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		if (data != null && DetailsActivity.ACTION_REFRESH.equals(data.getStringExtra(DetailsActivity.EXTRA_ACTION))) {
-			update();
-		}
-	}
-
 
 	private void update() {
 		BrowseAdapter adapter = new BrowseAdapter(this);
