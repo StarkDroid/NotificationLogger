@@ -41,29 +41,6 @@ public class NotificationListener extends NotificationListenerService {
 		}
 	}
 
-	public static StatusBarNotification[] getAllActiveNotifications() {
-		if(instance != null) {
-			try {
-				return instance.getActiveNotifications();
-			} catch (Exception e) {
-				if(Const.DEBUG) e.printStackTrace();
-			}
-		}
-		return null;
-	}
-
-	@TargetApi(Build.VERSION_CODES.O)
-	public static StatusBarNotification[] getAllSnoozedNotifications() {
-		if(instance != null) {
-			try {
-				return instance.getSnoozedNotifications();
-			} catch (Exception e) {
-				if(Const.DEBUG) e.printStackTrace();
-			}
-		}
-		return null;
-	}
-
 	@TargetApi(Build.VERSION_CODES.LOLLIPOP)
 	public static int getInterruptionFilter() {
 		if(instance != null) {

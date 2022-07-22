@@ -12,7 +12,6 @@
     <androidx.preference.Preference
         android:key="pref_browse"
         android:title="@string/settings_browse"
-        android:summary="-"
         app:dependency="pref_status"
         app:iconSpaceReserved="false" />
 

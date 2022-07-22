@@ -107,8 +107,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 		try {
 			SQLiteDatabase db = dbHelper.getReadableDatabase();
 			long numRowsPosted = DatabaseUtils.queryNumEntries(db, DatabaseHelper.PostedEntry.TABLE_NAME);
-			int stringResource = numRowsPosted == 1 ? R.string.settings_browse_summary_singular : R.string.settings_browse_summary_plural;
-			prefBrowse.setSummary(getString(stringResource, numRowsPosted));
 		} catch (Exception e) {
 			if(Const.DEBUG) e.printStackTrace();
 		}
