@@ -11,14 +11,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.format.DateUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -72,20 +69,6 @@ public class DetailsActivity extends AppCompatActivity {
 			dialog = null;
 		}
 		super.onPause();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.details, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-		if(item.getItemId() == R.id.menu_delete) {
-			confirmDelete();
-		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	private void loadDetails(String id) {

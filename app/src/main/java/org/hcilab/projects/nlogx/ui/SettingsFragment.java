@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -14,7 +13,6 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
-import org.hcilab.projects.nlogx.BuildConfig;
 import org.hcilab.projects.nlogx.R;
 import org.hcilab.projects.nlogx.misc.Const;
 import org.hcilab.projects.nlogx.misc.DatabaseHelper;

@@ -94,13 +94,6 @@ class BrowseAdapter extends RecyclerView.Adapter<BrowseViewHolder> {
 			vh.preview.setText(item.getPreview());
 		}
 
-		if(item.shouldShowDate()) {
-			vh.date.setVisibility(View.VISIBLE);
-			vh.date.setText(item.getDate());
-		} else {
-			vh.date.setVisibility(View.GONE);
-		}
-
 		if(position == getItemCount() - 1) {
 			loadMore(item.getId());
 		}
@@ -226,10 +219,6 @@ class BrowseAdapter extends RecyclerView.Adapter<BrowseViewHolder> {
 
 		public String getDate() {
 			return date;
-		}
-
-		public boolean shouldShowDate() {
-			return showDate;
 		}
 
 		public void setShowDate(boolean showDate) {
