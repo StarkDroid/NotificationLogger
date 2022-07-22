@@ -29,17 +29,4 @@
         android:defaultValue="false"
         app:iconSpaceReserved="false" />
 
-    <androidx.preference.Preference
-        android:key="pref_about"
-        android:title="@string/settings_about"
-        android:summary="@string/settings_about_summary"
-        app:iconSpaceReserved="false" />
-
-    <androidx.preference.Preference
-        android:key="pref_version"
-        android:title="@string/settings_version"
-        android:summary="0"
-        android:enabled="false"
-        app:iconSpaceReserved="false" />
-
 </androidx.preference.PreferenceScreen>
