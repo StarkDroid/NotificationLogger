@@ -16,13 +16,6 @@
         app:iconSpaceReserved="false" />
 
     <androidx.preference.SwitchPreference
-        android:key="pref_text"
-        android:title="@string/settings_text"
-        android:summary="@string/settings_text_summary"
-        android:defaultValue="true"
-        app:iconSpaceReserved="false" />
-
-    <androidx.preference.SwitchPreference
         android:key="pref_ongoing"
         android:title="@string/settings_ongoing"
         android:summary="@string/settings_ongoing_summary"

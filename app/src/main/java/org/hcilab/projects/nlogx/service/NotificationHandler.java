@@ -31,8 +31,7 @@ public class NotificationHandler {
 			if(Const.DEBUG) System.out.println("posted ongoing!");
 			return;
 		}
-		boolean text = sp.getBoolean(Const.PREF_TEXT, true);
-		NotificationObject no = new NotificationObject(context, sbn, text, -1);
+		NotificationObject no = new NotificationObject(context, sbn, true, -1);
 		log(DatabaseHelper.PostedEntry.TABLE_NAME, DatabaseHelper.PostedEntry.COLUMN_NAME_CONTENT, no.toString());
 	}
 

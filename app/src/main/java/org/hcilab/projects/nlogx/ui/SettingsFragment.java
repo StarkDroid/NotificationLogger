@@ -28,7 +28,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
 	private Preference prefStatus;
 	private Preference prefBrowse;
-	private Preference prefText;
 	private Preference prefOngoing;
 
 	@Override
@@ -53,7 +52,6 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 			});
 		}
 
-		prefText    = pm.findPreference(Const.PREF_TEXT);
 		prefOngoing = pm.findPreference(Const.PREF_ONGOING);
 
 	}
@@ -82,11 +80,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
 		if(Util.isNotificationAccessEnabled(getActivity())) {
 			prefStatus.setSummary(R.string.settings_notification_access_enabled);
-			prefText.setEnabled(true);
 			prefOngoing.setEnabled(true);
 		} else {
 			prefStatus.setSummary(R.string.settings_notification_access_disabled);
-			prefText.setEnabled(false);
 			prefOngoing.setEnabled(false);
 		}
 
